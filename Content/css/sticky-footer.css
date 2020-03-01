@@ -1,0 +1,15 @@
+#document {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: auto;
+}
+
+.page-footer {
+    background-color: #e4e0ab;
+    flex-shrink: 0;
+    padding: 0 15px;
+    width: auto;
+}

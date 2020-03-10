@@ -1,9 +1,10 @@
 "use strict";
+
 import * as userinteraction from './lesson1/lesson1.userinteraction.js';
 import * as variables from './lesson1/lesson1.variables.js';
-import * as conditionalstatements from './lesson1/lesson1.conditionalstatements.js'
-import * as loops from './lesson1/lesson1.loops.js'
-import * as func from './lesson1/lesson1.func.js'
+import * as conditionalstatements from './lesson1/lesson1.conditionalstatements.js';
+import * as loops from './lesson1/lesson1.loops.js';
+import * as func from './lesson1/lesson1.func.js';
 
 
 console.log(`Task11. Functions \nThe value taken to the specified power: ${func.pow(2, 3)}`);

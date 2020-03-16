@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>My First Web Page</h2>
+
+<script>
+	var jsonData = '[{"username":"first user","password":"password1","email":"user1malyz.com","uid":"7865b4-8765"},{"username":"second user","password":"password1","email":"user2@mail.com","uid": "7865b4-8765"}]';
+var obj = JSON.parse(jsonData);
+var obj1 = obj[0];
+var obj2 = obj[1];
+document.write(obj1.username + " " + obj1.password + " " + obj1.email + " " + obj1.uid);
+document.write(obj2.username + " " + obj2.password + " " + obj2.email + " " + obj2.uid);
+</script>
+
+</body>
+</html> 

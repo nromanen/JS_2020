@@ -1,23 +1,23 @@
-// task 1
+// Task 1
 let arr = ["Tom", "Sam", "Ray", "Bob"];
 let [x, y, , ...z] = arr;
 console.log(x); // "Tom"
 console.log(y); // "Sam"
 console.log(z); // [Bob]
 
-// task 2
+// Task 2
 let names = {
 	first: "Tom",
 	second: "Sam",
 	third: "Ray",
 	fourth: "Bob"
 };
-let { first: f = 'Name №1', second: t = 'Name №2', third: x = 'Name №3', foutrh: fs = 'Name №4', fifth: d = 'Name №5' } = names;
+let { first: f = 'Name №1', second: t = 'Name №2', third: x = 'Name №3', foutrh: fs = 'Name №4', fifth = 'Name №5' } = names;
 console.log(f); // "Tom"
 console.log(x); // "Ray"
 console.log(fifth); // "Name №5"
 
-// task 3
+// Task 3
 let data = {
 	names: ["Sam", "Tom", "Ray", "Bob"],
 	ages: [20, 24, 22, 26],
@@ -28,7 +28,7 @@ console.log(age2); // 24
 console.log(name4); // "Bob"
 console.log(age4); // 26
 
-// task 4
+// Task 4
 function mul() {
 	let mulAll = 1;
 	let count = 0;
@@ -44,7 +44,7 @@ function mul() {
 console.log(mul(1, "str", 2, 3, true)); // 6
 console.log(mul(null, "str", false, true)); // 0
 
-// task 5
+// Task 5
 let obj = {
 	name: "obj",
 	print: function () {
@@ -59,6 +59,17 @@ function multiCaller(func, count) {
 	}
 }
 multiCaller(obj.print(), 3);  // "obj", 3 раза
+
+// Task 6
+
+
+//Task 7 
+let names = {
+	first: "Tom",
+	second: "Sam",
+	third: "Ray"
+};
+console.log(`"Первый: -${names.first}-, Второй - "${names.second}", Третий => '${names.third}'"`); // "Первый: -Tom-, Второй - "Sam", Третий => 'Ray'"
 
 
 // Task 8

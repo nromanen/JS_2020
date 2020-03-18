@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Свойства узлов</title>
+      <meta charset="utf-8" />
+   </head>
+   <body>
+      <div><b>Привет мир!</b></div>
+      <div><i>Привет мир!</i></div>
+      <script>
+         let a = document.body.children[0]
+         let b = document.body.children[1]
+         console.log(a.innerHTML)
+         console.log(b.innerHTML)
+          let x = a.innerHTML
+          a.innerHTML = b.innerHTML
+          b.innerHTML = x
+
+        // [a.innerHTML, b.innerHTML] = [b.innerHTML, a.innerHTML]
+        //console.log(a.innerHTML, b.innerHTML)
+        //[document.body.children[0].innerHTML, document.body.children[1].innerHTML] = [document.body.children[1].innerHTML, document.body.children[0].innerHTML]
+        
+      </script>
+   </body>
+</html>

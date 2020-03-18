@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Навигация в DOM</title>
+      <meta charset="utf-8" />
+   </head>
+   <body>
+      <form name="authForm">
+         Логин:<br />
+         <input type="text" name="log" /><br />
+         Пароль:<br />
+         <input type="text" name="pass" /><br />
+         <button name="signIn">Войти</button>
+      </form>
+      <script>
+         let form = document.forms.authForm
+         console.log(form)
+         let form1 = document.forms[0]
+         console.log(form1)
+         let input = form.elements[0]
+         console.log(input)
+         let button = form.elements.signIn
+         console.log(button)
+
+      </script>
+   </body>

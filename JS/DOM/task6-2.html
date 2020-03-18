@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Навигация в DOM</title>
+      <meta charset="utf-8" />
+   </head>
+   <body>
+      <table>
+         <caption>Таблица</caption>
+         <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+         </tr>
+         <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+         </tr>
+      </table>
+      <script>
+         let t = document.body.children[0]
+         console.log(t)
+         let rows = t.rows
+         console.log(rows)
+         console.log(rows.length)
+         let tabcol = t.children
+         console.log(tabcol)
+         let caption = t.children[0]
+         console.log(caption)
+         let row1_column1 = t.rows[0].cells[0]
+         console.log(row1_column1)
+         let row2_column3 = t.rows[1].cells[2]
+         console.log(row2_column3)
+
+      </script>
+   </body>
+</html>

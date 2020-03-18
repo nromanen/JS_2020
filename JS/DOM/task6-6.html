@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Свойства узлов</title>
+      <meta charset="utf-8" />
+   </head>
+   <body>
+      Текстовый узел №1<br />
+      Текстовый узел №2
+      <script>
+         alert(document.body.firstChild.data)
+         alert(document.body.lastChild.nodeValue)
+         let nodes = document.body.childNodes
+         alert(nodes[nodes.length - 1].data)
+         for (let i = 0; i < nodes.length; i++) {
+             alert(nodes[i].data)
+         }
+      </script>
+   </body>
+</html>

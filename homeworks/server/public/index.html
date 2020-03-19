@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="main.css"/>
+	<title>Home work</title>
+</head>
+<body>
+	<div class="main-container">
+		<div class="content">
+			<h1>Rotar Roxolana</h1>
+			<h2>Server is work</h2>
+				<img src="20000000.png">
+			<script>
+				var request = new XMLHttpRequest();
+		    	request.open("GET", "/user.json", false);
+		   		 request.send(null)
+				var obj = JSON.parse(request.responseText);
+				var obj1 = obj[0];
+				var obj2 = obj[1];
+				document.write("<div>");
+				document.write(obj1.username + " " + obj1.password + " " + obj1.email + " " + obj1.uid);
+				document.write("<br>");
+				document.write(obj2.username + " " + obj2.password + " " + obj2.email + " " + obj2.uid);
+				document.write("</div>");
+			</script>
+
+		</div>
+	</div>
+</body>
+</html>

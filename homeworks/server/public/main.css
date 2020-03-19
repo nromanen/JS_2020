@@ -1,0 +1,21 @@
+body, div, img, h1, h2{
+	margin: 0;
+	font-family: 'Segoe WP light', sans-serif;
+}
+body{
+	width: 100%;
+	background-color: powderblue;
+	padding-bottom: 40px;
+}
+
+.main-container{
+	overflow: hidden;
+}
+
+.content{
+    color: teal;
+    font-size: 40px;
+    margin: 0px;
+    text-align: center;
+    font-style: italic;
+}

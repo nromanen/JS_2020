@@ -1,0 +1,86 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Arimo', sans-serif;
+	font-size: 10px;
+}
+
+.user-form {
+	width: 500px;
+	height: 475px;
+	margin: 100px auto 0;
+	border-radius: 10px;
+	box-shadow: 0 0 5px rgba(64, 64, 64, 0.3);
+	font-size: 1.4em;
+} 
+
+.user-form-wrapper {
+	margin-left: 30px;
+}
+
+.form-borders {
+	height: 30px;
+	border-color: 1px solid lightskyblue;
+	border-radius: 2px;
+}
+
+.form-borders:hover, .button:hover {
+	background-color: lightskyblue;
+	cursor: pointer;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.inline-block:nth-child(odd) {
+	margin-right: 40px;
+}
+
+input, select, textarea {
+	padding: 2px 10px;
+}
+
+.input-sex {
+	display: inline-block;
+}
+
+.city, .textarea, .buttons {
+	margin: 10px 0;
+}
+
+textarea:focus, input:focus {
+	background-color: #e8f1f7;
+}
+
+textarea, button, input, select, option {
+	box-shadow: 0 0 5px rgba(180, 220, 245, 1);
+	border: 1px transparent;
+	border-radius: 5px;
+}
+
+.radio-buttons input {
+	cursor: pointer;
+	box-shadow: none;
+}
+
+.button {	
+	width: 150px;
+	height: 30px;
+	background-color: transparent;
+	border-radius: 10px;
+	margin: 0 5px;
+}
+
+.greatings {
+	width: 500px;
+	margin: 25px auto;
+	font-size: 1.4em;
+	line-height: 1.4em;
+}
+
+.check-pass {
+	color: red;
+}

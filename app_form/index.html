@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>My site</title>
+	<link href="https://fonts.googleapis.com/css?family=Arimo:400,700&display=swap&subset=cyrillic" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="user-form">
+		<form action="#" method="get" class="user-form-inputs">
+			<div class="user-form-wrapper">
+				<div class="inline-block">
+					<p>Ваше ім'я:</p>
+					<input type="text" size="25" name="username" class="form-borders" placeholder="Введіть ім'я">
+				</div>
+
+				<div class="inline-block">
+					<p>Ваш email:</p>
+					<input type="email" size="25" name="useremail" id="" placeholder="Введіть email"
+						class="form-borders">
+				</div>
+
+				<div class="inline-block">
+					<p>Ваш пароль:</p>
+					<input type="password" size="25" name="userpass" id="" placeholder="Введіть пароль"
+						class="pass form-borders">
+				</div>
+
+				<div class="inline-block">
+					<p>Повторіть пароль:<p>
+							<input type="password" size="25" name="userpass-check" id="" placeholder="Введіть пароль"
+								class="pass1 form-borders">
+				</div>
+				<div class="check-pass"></div>
+				<div class="inline-block radio-buttons">
+					<label for="sex">Ваша стать:</label>
+					<p class="input-sex"><input type="radio" name="sex" class="radio-button" value='man'
+							checked>Чоловіча
+					</p>
+					<p class="input-sex"><input type="radio" name="sex" class="radio -button" value="woman">Жіноча</p>
+					<p class="input-sex"><input type="radio" name="sex" class="radio-button" value="undefined">Не скажу
+					</p>
+				</div>
+
+				<div class="city">
+					<label for="city">Ваше місто:</label>
+					<select name="city" id="">
+						<option selected value="Chernivtsi">Чернівці</option>
+						<option value="Ivano-Frankisk">Івано-Франківськ</option>
+						<option value="Lviv">Львів</option>
+						<option value="Kyiv">Київ</option>
+					</select>
+				</div>
+
+				<div class="textarea">
+					<textarea name="message" id="" cols="41" rows="10" placeholder="Додаткова інформація:"></textarea>
+				</div>
+				<div class="buttons">
+					<button type="submit" class="button button-submit">Відправити</button>
+					<button type="reset" class="button">Очистити</button>
+				</div>
+		</form>
+	</div>
+	</div>
+	<div class="greatings">
+
+	</div>
+	<script src="script.js"></script>
+</body>
+
+</html>

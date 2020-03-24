@@ -7,11 +7,11 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Node Debug",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/wwwroot/js/lesson5/lesson5.modules.js"
+            "program": "${workspaceFolder}/wwwroot/js/lesson6/app.js"
         }
     ]
 }

@@ -1,3 +1,15 @@
 {
+    "name": "javascript-fundamental-2020",
+    "description": "JAVASCRIPT FUNDAMENTAL",
+    "version": "1.0.0",
+    "dependencies" : {},
+    "main": "index.js",
+    "author": {
+        "email": "andrew.zaharovskyi@gmail.com",
+        "name": "Andrii Zaharovskyi"
+    },
+    "targets": [
+        "node13"
+    ],
     "type": "module"
 }

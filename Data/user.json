@@ -1,0 +1,28 @@
+[{
+  "username": "first user",
+  "password": "password1",
+  "email": "user1malyz.com",
+  "phone": "+380999999999",
+  "uid": "7865b4-8765"
+},
+{
+  "username": "second user",
+  "password": "password2",
+  "email": "user2@mail.com",
+  "phone": "+380999999999",
+  "uid": "7865b4-8765"
+},
+{
+  "username": "third user",
+  "password": "password3",
+  "email": "user1malyz.com",
+  "phone": "+380999999999",
+  "uid": "7865b4-8765"
+},
+{
+  "username": "firth user",
+  "password": "password4",
+  "email": "user1malyz.com",
+  "phone": "+380999999999",
+  "uid": "7865b4-8765"
+}]

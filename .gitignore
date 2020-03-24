@@ -1,1 +1,3 @@
-Content/lib/
+.vscode/
+wwwroot/lib/
+.jshintrc

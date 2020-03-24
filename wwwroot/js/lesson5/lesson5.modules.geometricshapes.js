@@ -2,15 +2,11 @@
 
 // Task6.Modules
 export let rectangle = (function() {
-    //let self = this;
     let length = 0;
     let width = 0;
     function _isValueValid(value) {
-        if (Number.isFinite(value) && (value > 0)) {
-            return true;
-        } else {
-            return false;
-        }
+        return Number.isFinite(value) && (value > 0);
+        
     };
     function area() {
         return length * width;

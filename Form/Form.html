@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="CSS/form.css">
+</head>
+<body>
+    <form name="user" id="user">
+        <fieldset name="user_name">
+            <legend>Реєстрація</legend>
+                <p><strong>Логин:</strong> 
+                    <input maxlength="25" size="40" name="login"></p>
+                    <p><strong>Пароль:</strong> 
+                    <input type="password" maxlength="25" size="40" name="password"></p>
+        </fieldset>
+        
+        <fieldset name="optional data">
+            <legend>Інформація</legend>
+                <p><label for="email">E-mail</label><input type="email" id="email"></p>
+                <p><label for="date_of_birthday">Дата народження</label><input type="date" id="date_of_birthday"></p>
+                <p><label for="telephone">Мобільний телефон</label><input type="text" id="telephone"></p>
+            <p>
+                <input type="radio" id="men" name="gender" value="men">
+                <label for="men">Чоловік</label>
+                <input type="radio" id="women" name="gender" value="women">
+                <label for="women">Жінка</label>
+            </p>
+            <p><label for="about_me">Про себе</label><br><br><textarea id="about_me" rows="10" cols="50" placeholder="Мені подобається програмування"></textarea></p>
+            <p>
+                <lable>У вас є автомобіль?
+                    <select>
+                        <option>Так</option>
+                        <option>НІ</option>
+                    </select>
+                </lable>
+            </p>
+        </fieldset>
+        <fieldset name="question">
+            <legend>Виберіть таємне питання</legend>
+        <p><select name="question">
+             <option value="r1">Дата народження</option><br>
+             <option value="r2">Дата народження мами</option><br>
+             <option value="r3">Ім'я найкращого друга</option><br>
+             <textarea id="question" rows="1" cols="7" placeholder=""></textarea>
+           </select></p>
+        </fieldset>
+
+        <p><button form="user" type="submit">Відправити</button></p>
+</form>
+</body>
+</html>

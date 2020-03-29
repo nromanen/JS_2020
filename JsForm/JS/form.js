@@ -3,20 +3,16 @@
 let button = document.getElementById('button')
 let form = document.forms.user
 let name = document.querySelectorAll("#name")[0]
-let errorName = document.getElementById("errorName")
 let password = document.getElementById('password')
-let errorPassword = document.getElementById('errorPassword')
 let email = document.getElementById('email')
-let errorEmail = document.getElementById('errorEmail')
 let dateOfBirthday = document.getElementById('dateOfBirthday')
-let errorDateOgBirthday = document.getElementById('errorDateOgBirthday')
 let telephone = document.getElementById('telephone')
-let errorTelephone = document.getElementById('errorTelephone')
-let respond = document.querySelector('.respond')
+let gender = document.getElementsByName('gender')
+let respond = document.querySelector('#respond')
 
 
 function validateName(event) {
-    // alert(/^[A-Z][a-z]{1,14}$/.test(name.value))
+  let errorName = document.getElementById("errorName")
     if (/^[A-Z][a-z]{1,14}$/.test(name.value)) {
         name.setCustomValidity('')
         errorName.innerHTML = ''
@@ -39,6 +35,7 @@ function validateName(event) {
 }
 
 function validatePassword(event) {
+  let errorPassword = document.getElementById('errorPassword')
     if (password.validity.patternMismatch) {
         password.setCustomValidity("I expect a password, darling!  :) ")
         errorPassword.innerHTML = "Password must be at least 5 characters long"
@@ -50,6 +47,7 @@ function validatePassword(event) {
 
 
 function validateEmail(event) {
+  let errorEmail = document.getElementById('errorEmail')
     if (email.validity.patternMismatch) {
         email.setCustomValidity("I expect an e-mail, darling!  :) ")
         errorEmail.innerHTML = "Please enter only Gmail, for exemple :     '...@gmail.com'"
@@ -61,6 +59,7 @@ function validateEmail(event) {
 
 
 function validateTelephone(event) {
+  let errorTelephone = document.getElementById('errorTelephone')
     if (telephone.validity.patternMismatch) {
         telephone.setCustomValidity("I expect a telephone, darling!  :) ")
         errorTelephone.innerHTML = "Telephone must be in format xxx-xxx-xx-xx or (xxx) xxx xx xx"
@@ -73,17 +72,23 @@ function validateTelephone(event) {
 
 
 button.addEventListener ('click',function(event) {
-    event.preventDefault()
+    //event.preventDefault()
+    let select = document.getElementById('car')
     if (name.validity.valid && password.validity.valid && email.validity.valid && telephone.validity.valid) {
+        
         let user = {
             name: name.value,
             password: password.value,
             email: email.value,
-            telephone: telephone.value
-
+            telephone: telephone.value,
+            car: select.value,
         }
-        respond.innerHTML = JSON.stringify(user)
-        alert(user.name)
+let userObj = `User name: ${user.name}
+User password: ${user.password}
+User email: ${user.email}
+User telephone: ${user.telephone}
+User car: ${user.car}`
+        alert(userObj)
     }
 })
 

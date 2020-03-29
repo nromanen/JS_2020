@@ -1,23 +1,32 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 
+body {
+  background-image: url(../images/sun-pattern.png);
+}
 
 .container {
-  border-radius: 5px;
-  background-color: whitesmoke;
+  max-width: 500px;
+  border-radius: 20px;
+  background-color: rgb(172, 204, 206);
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
   padding: 20px;
+  margin: auto;
   
 }
 form {
     border: 3px solid grey;
     border-radius: 20px;
+    
 }
 .field {
   margin: 20px;
   padding: 20px;
   border-radius: 20px;
-  
+  box-shadow: 10px 10px silver;
+}
+.field:hover {
+  box-shadow: 10px 10px 10px 10px silver;
 }
 #name, #password, #email, #date_of_birthday, #telephone {
   font-size: large;
@@ -45,28 +54,14 @@ form {
   button:hover {
     opacity: 0.5;
   }
-  #name:invalid, #password:invalid, #telephone:invalid, #email:invalid {
+  #name:invalid:not(:placeholder-shown), #password:invalid:not(:placeholder-shown), #telephone:invalid:not(:placeholder-shown), #email:invalid:not(:placeholder-shown) {
     border: 2px dashed red;
   }
   #name:valid, #password:valid, #telephone:valid, #email:valid {
-      border: 2px solid black;
+      border: 2px solid rgb(23, 155, 23);
     }
-.error {
-  width: 100%;
-  padding: 0;
-  font-size: 80%;
-  color: white;
-  background-color: #900;
-  border-radius: 4px;
-
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}    
-.error.active {
-  padding: 0.3em;
-}
 .span {
   margin: 2em;
-  color: black;
+  color: red;
   font-weight: bold;
 }

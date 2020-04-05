@@ -69,27 +69,65 @@ function validateTelephone(event) {
       }
 }
 
+function validation() {
+  if (name.validity.valid && password.validity.valid && email.validity.valid && telephone.validity.valid) {
+      return true
+     }
+     return false
+}
 
+function loadUsers() {
+  let xhttp = new XMLHttpRequest()
+  xhttp.onreadystatechange = () => {
+     if (xhttp.readyState == 4 && xhttp.status == 200) {
+        let displayUsers = ''
+        let respondUsers = JSON.parse(xhttp.response)
+        respondUsers.forEach(worker => {
+          function printUser(element) {
+            if (typeof(element) === 'object') {
+              for (let key in element) {
+                console.log(key + ' : ')
+                printUser(element[key])
+              }
+            } else {
+              return console.log(element)
+            }
+          }
+          printUser(worker)
+        });     
+      }
+  } 
+  xhttp.open('GET', 'https://jsonplaceholder.typicode.com/users', true)
+  xhttp.send()
+}
 
 button.addEventListener ('click',function(event) {
-    //event.preventDefault()
-    let select = document.getElementById('car')
-    if (name.validity.valid && password.validity.valid && email.validity.valid && telephone.validity.valid) {
-        
-        let user = {
-            name: name.value,
-            password: password.value,
-            email: email.value,
-            telephone: telephone.value,
-            car: select.value,
-        }
-let userObj = `User name: ${user.name}
-User password: ${user.password}
-User email: ${user.email}
-User telephone: ${user.telephone}
-User car: ${user.car}`
-        alert(userObj)
+  event.preventDefault()
+  if (validation()) {
+    let xhr = new XMLHttpRequest()
+    let user = {
+      name: name.value,
+      email: email.value,
+      phone: telephone.value
     }
+    xhr.open('POST', 'https://jsonplaceholder.typicode.com/users', true)
+    xhr.setRequestHeader('Content-type', 'application/json')
+    xhr.send(JSON.stringify(user))
+
+    xhr.onreadystatechange = function() {
+      
+      if (this.readyState == 4 && this.status == 201) {
+        let respond = JSON.parse(this.response)
+        let displayUser = '<table border="1">'
+        for (let key in respond)  {
+          displayUser += '<tr><td>' + key +'</td><td>' + respond[key] +'</td></tr>' 
+        }
+        displayUser += '</table>'
+        showUsers.innerHTML = displayUser
+        //showUsers.innerHTML = this.responseText
+      }
+    }
+  }
 })
 
 

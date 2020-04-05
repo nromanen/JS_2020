@@ -294,3 +294,33 @@
 //         }
 //  }
 // digitN(k, n, ost)
+
+
+//arr = [1]
+//first = 2
+//second = 5
+
+function sumSliceArray(arr,first, second) {
+  let result 
+  //if (first <= (arr.length -1)  && second <= (arr.length -1) && typeof(first) ==='number' && typeof(second) ==='number' && first > 0 && second > 0) {
+  try { 
+    result = arr[first] + arr[second]
+  }
+  catch(error) {
+    throw new RangeError(' not index ')
+  }
+  return result
+}
+
+let arr = [2, 3, 'dfg']
+let first = 0
+let  second = 1
+
+  if (first <= (arr.length -1)  && second <= (arr.length -1) && typeof(first) ==='number' && typeof(second) ==='number' && first > 0 && second > 0) {
+    console.log(sumSliceArray(arr, first, second))
+  } else {
+    console.log('error.stack')
+  }
+
+
+

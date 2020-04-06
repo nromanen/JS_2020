@@ -90,5 +90,83 @@ function isIsogram(str){
   const zeroFuel = (distanceToPump, mpg, fuelLeft) => (fuelLeft * mpg) >= distanceToPump;
 
 
+//Is the string uppercase?
+// Task
+// Add the isUpperCase method to String to see whether the string is ALL CAPS. For example:
+// "c".isUpperCase() == false
+// "C".isUpperCase() == true
+// "hello I AM DONALD".isUpperCase() == false
+// "HELLO I AM DONALD".isUpperCase() == true
+// "ACSKLDFJSgSKLDFJSKLDFJ".isUpperCase() == false
+// "ACSKLDFJSGSKLDFJSKLDFJ".isUpperCase() == true
+// In this Kata, a string is said to be in ALL CAPS whenever it does not contain any lowercase letter so any string containing no letters at all is trivially considered to be in ALL CAPS.
+
+  String.prototype.isUpperCase = function() {
+    return this.valueOf().toUpperCase() === this.valueOf()
+  }
+
+
+  // Write a function called that takes a string of parentheses, and determines if the order of the parentheses is valid. The function should return true if the string is valid, and false if it's invalid.
+
+  // Examples
+  
+  // "()"              =>  true
+  // ")(()))"          =>  false
+  // "("               =>  false
+  // "(())((()())())"  =>  true
+
+
+  function validParentheses(parens){
+    let res = 0
+    for (let i = 0; i < parens.length; i++) {
+      if (parens[i] == '(') {
+        res += 1
+      }
+      if (parens[i] == ')') {
+        res -= 1
+      }
+      if (res < 0) return false
+    }
+    return res == 0
+  }
+
+
+
+//   altERnaTIng cAsE <=> ALTerNAtiNG CaSe
+
+// Define String.prototype.toAlternatingCase (or a similar function/method such as to_alternating_case/toAlternatingCase/ToAlternatingCase in your selected language; see the initial solution for details) such that each lowercase letter becomes uppercase and each uppercase letter becomes lowercase. For example:
+
+// "hello world".toAlternatingCase() === "HELLO WORLD"
+// "HELLO WORLD".toAlternatingCase() === "hello world"
+// "hello WORLD".toAlternatingCase() === "HELLO world"
+// "HeLLo WoRLD".toAlternatingCase() === "hEllO wOrld"
+// "12345".toAlternatingCase() === "12345" // Non-alphabetical characters are unaffected
+// "1a2b3c4d5e".toAlternatingCase() === "1A2B3C4D5E"
+// "String.prototype.toAlternatingCase".toAlternatingCase() === "sTRING.PROTOTYPE.TOaLTERNATINGcASE"
+
+//variant 1
+
+String.prototype.toAlternatingCase = function () {
+  let res = ''
+  for (let i = 0; i < this.length; i++ ) {
+    if (this[i] === this[i].toUpperCase()) {
+      res += this[i].toLowerCase()
+    } else {
+      res += this[i].toUpperCase()
+    } 
+  }
+  return res
+}
+
+//variant 2
+
+String.prototype.toAlternatingCase = function () {
+  return [...this].
+    map(
+       item => (item === item.toUpperCase() ? item.toLowerCase(): item.toUpperCase() )
+       ).
+    join('')
+}
+
 
 

@@ -2,6 +2,7 @@
 
 body {
   background-image: url(../images/sun-pattern.png);
+
 }
 
 .container {
@@ -12,6 +13,7 @@ body {
   font-weight: 400;
   padding: 20px;
   margin: auto;
+  
   
 }
 form {
@@ -58,10 +60,15 @@ button {
     border: 2px dashed red;
   }
   #name:valid, #password:valid, #telephone:valid, #email:valid {
-      border: 2px solid rgb(23, 155, 23);
+      border: 2px solid rgb(201, 202, 201);
     }
 .span {
   margin: 2em;
   color: red;
   font-weight: bold;
+}
+
+#showUser {
+  margin: auto;
+  text-align: center;
 }

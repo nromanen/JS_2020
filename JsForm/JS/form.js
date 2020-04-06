@@ -60,14 +60,17 @@ function validateEmail(event) {
 
 function validateTelephone(event) {
   let errorTelephone = document.getElementById('errorTelephone')
-    if (telephone.validity.patternMismatch) {
+    if (this.validity.patternMismatch) {
         telephone.setCustomValidity("I expect a telephone, darling!  :) ")
         errorTelephone.innerHTML = "Telephone must be in format xxx-xxx-xx-xx or (xxx) xxx xx xx"
       } else {
-        telephone.setCustomValidity("")
+        this.setCustomValidity("")
         errorTelephone.innerHTML = ""
       }
 }
+ 
+
+ 
 
 function validation() {
   if (name.validity.valid && password.validity.valid && email.validity.valid && telephone.validity.valid) {
@@ -80,17 +83,19 @@ function loadUsers() {
   let xhttp = new XMLHttpRequest()
   xhttp.onreadystatechange = () => {
      if (xhttp.readyState == 4 && xhttp.status == 200) {
-        let displayUsers = ''
         let respondUsers = JSON.parse(xhttp.response)
         respondUsers.forEach(worker => {
           function printUser(element) {
+            //let displayUsers = '<table border="1">'
             if (typeof(element) === 'object') {
               for (let key in element) {
                 console.log(key + ' : ')
+                //displayUsers += '<tr><td>' + key + '</td></tr>'
                 printUser(element[key])
               }
             } else {
-              return console.log(element)
+                console.log(element)
+        
             }
           }
           printUser(worker)
@@ -123,8 +128,9 @@ button.addEventListener ('click',function(event) {
           displayUser += '<tr><td>' + key +'</td><td>' + respond[key] +'</td></tr>' 
         }
         displayUser += '</table>'
-        showUsers.innerHTML = displayUser
-        //showUsers.innerHTML = this.responseText
+        showUser.innerHTML = displayUser
+        
+        
       }
     }
   }
@@ -139,6 +145,17 @@ email.addEventListener("change", validateEmail)
 
 telephone.addEventListener("change", validateTelephone)
 
-   
+// telephone.addEventListener('input', function(event) {
+//   switch(this.value.length) {
+//     case 1: this.value = '+38(' + this.value 
+//       break
+//     case 7: this.value = this.value + ') ' 
+//       break
+//     case 12: this.value = this.value + ' ' 
+//       break  
+//     case 15: this.value = this.value + ' '
+//     break
+//   }
+//})
     
 

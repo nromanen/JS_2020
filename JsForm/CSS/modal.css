@@ -1,0 +1,77 @@
+
+.vmodal {}
+
+.vmodal.open .modal-overlay,
+.vmodal.open .modal-window {
+    opacity: 1;
+    z-index: 1000;
+}
+
+.vmodal.hide .modal-overlay,
+.vmodal.hide .modal-window {
+    opacity: 1;
+    z-index: 1000;
+}
+
+.vmodal.open .modal-window {
+    transform: translateY(100px);
+    transition: transform .5s ease-in;
+}
+
+.vmodal.open .modal-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.vmodal.hide .modal-window {
+    transform: translateY(-200px);
+    transition: transform .5s ease-in;
+}
+
+.vmodal.hide .modal-overlay {
+    background: rgba(0, 0, 0, 0);
+}
+
+.modal-window, .modal-overlay {
+    z-index: -1;
+    opacity: 0;
+}
+.modal-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0);
+    transition: background .5s ease-in;
+
+}
+.modal-window {
+    width: 500px;
+    border-radius: 5px;
+    background: rgb(255, 255, 255);
+    margin:  auto;
+    transform: translateY(-200px);
+    
+}
+.modal-header {
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eeeeee;
+}
+.modal-title {
+    font-size: 1.5em;
+}
+.modal-close {
+    cursor: pointer;
+}
+.modal-body {
+    padding: 10px;
+}
+.modal-body p {
+    margin: 0 0 5px;
+}
+.modal-footer {
+    padding: 10px;
+    border-top: 1px solid #eeeeee;
+}

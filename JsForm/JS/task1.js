@@ -296,31 +296,77 @@
 // digitN(k, n, ost)
 
 
+
+//   Task 7
+// Задание №1. Исключения
+// Напишите функцию sumSliceArray(arr, first, second), которая принимает массив arr и два числа (first и second) – порядковые номера элементов массива, которые необходимо суммировать. Например, если ввели 3 и 5 – суммируются 3-й и 5-й элементы.
+// Функция должна генерировать исключения если были введены не числа, и когда одно из чисел, или оба больше размера массива.
+// Напишите код, который использует данную функцию, предусмотрите обработку возможных исключений.
+
 //arr = [1]
 //first = 2
 //second = 5
 
-function sumSliceArray(arr,first, second) {
-  let result 
-  //if (first <= (arr.length -1)  && second <= (arr.length -1) && typeof(first) ==='number' && typeof(second) ==='number' && first > 0 && second > 0) {
-  try { 
-    result = arr[first] + arr[second]
+// function sumSliceArray(arr,first, second) {
+//   let result 
+//   //if (first <= (arr.length -1)  && second <= (arr.length -1) && typeof(first) ==='number' && typeof(second) ==='number' && first > 0 && second > 0) {
+//   try { 
+//     result = arr[first] + arr[second]
+//   }
+//   catch(error) {
+//     throw new RangeError(' not index ')
+//   }
+//   return result
+// }
+
+// let arr = [2, 3, 'dfg']
+// let first = 0
+// let  second = 1
+
+//   if (first <= (arr.length -1)  && second <= (arr.length -1) && typeof(first) ==='number' && typeof(second) ==='number' && first > 0 && second > 0) {
+//     console.log(sumSliceArray(arr, first, second))
+//   } else {
+//     console.log('error.stack')
+//   }
+
+
+//   Задание №3. Асинхронное программирование
+// Напишите функцию random(min, max, delay, callback), которая через delay миллисекунд помещает callback в очередь на выполнение.
+// Если min меньше max, функция генерирует случайно число в диапазоне от min до max и передает в callback вторым параметром.
+// Если min больше max, функция создает объект ошибки и передает в callback первым параметром.
+// Для генерации случайных чисел можно использовать метод Math.random().
+// Примеры использования функции:
+// function random(min, max, delay, callback) {
+//   // Ваш код
+// }
+// random(1, 100, 2000, function (error, data) {
+//   // Ваш код
+// });
+// random(1000, 100, 3000, function (error, data) {
+//   // Ваш код
+// });
+// Через две секунды, на экране должно появится случайной число от 1 до 100.
+// Через три секунды, на экране должна появится информация об ошибке.
+
+function random(min, max, delay, callback) {
+  let data
+  let error
+  if (min < max) {
+    data = Math.floor(min + Math.random() * (max + 1 - min))
+  } else {
+    error = new Error('min > max')
   }
-  catch(error) {
-    throw new RangeError(' not index ')
-  }
-  return result
+  setTimeout(callback, delay, error, data)
 }
 
-let arr = [2, 3, 'dfg']
-let first = 0
-let  second = 1
-
-  if (first <= (arr.length -1)  && second <= (arr.length -1) && typeof(first) ==='number' && typeof(second) ==='number' && first > 0 && second > 0) {
-    console.log(sumSliceArray(arr, first, second))
+function callback(error, data) {
+  if (error) {
+    console.error(error)
   } else {
-    console.log('error.stack')
+    console.log(data)
   }
 
+}
 
-
+random(1, 100, 2000, callback)
+random(1000, 100, 3000, callback)

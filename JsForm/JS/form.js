@@ -86,16 +86,13 @@ function loadUsers() {
         let respondUsers = JSON.parse(xhttp.response)
         respondUsers.forEach(worker => {
           function printUser(element) {
-            //let displayUsers = '<table border="1">'
             if (typeof(element) === 'object') {
               for (let key in element) {
                 console.log(key + ' : ')
-                //displayUsers += '<tr><td>' + key + '</td></tr>'
                 printUser(element[key])
               }
             } else {
                 console.log(element)
-        
             }
           }
           printUser(worker)
@@ -110,10 +107,19 @@ button.addEventListener ('click',function(event) {
   event.preventDefault()
   if (validation()) {
     let xhr = new XMLHttpRequest()
+    
     let user = {
       name: name.value,
       email: email.value,
-      phone: telephone.value
+      phone: telephone.value,
+      date: dateOfBirthday.value
+    }
+    let genders = document.getElementsByName('gender') 
+    for (let i = 0; i < genders.length; i++) {
+      if (genders[i].checked) {
+        user.gender = genders[i].value
+        console.log(user.gender)
+      }
     }
     xhr.open('POST', 'https://jsonplaceholder.typicode.com/users', true)
     xhr.setRequestHeader('Content-type', 'application/json')
@@ -156,6 +162,6 @@ telephone.addEventListener("change", validateTelephone)
 //     case 15: this.value = this.value + ' '
 //     break
 //   }
-//})
+// })
     
 

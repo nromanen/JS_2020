@@ -1,5 +1,32 @@
 'use strict'
 
+ let optionsModal = {
+  title: 'Vitalii modal',
+  closable: true,
+  content: `
+  <h4>My modal is working</h4>
+  <p>Aaaaaaaaaaaaaaa</p>
+  `,
+  width: '400px',
+  footerButtons: [
+      {text: 'Ok', type: 'primary',
+      //  handler(json) {
+      //     console.log('Primari btn clicked')
+      //     modal.close()
+      // }
+    },
+      {text: 'Cancel', type: 'Danger', handler() {
+          console.log('Danger btn clicked')
+          modal.close()
+      }
+    }
+  ], 
+}
+
+const modal = $.modal(optionsModal)
+
+
+
 let button = document.getElementById('button')
 let form = document.forms.user
 let name = document.querySelectorAll("#name")[0]
@@ -71,13 +98,14 @@ function validateTelephone(event) {
  
 
  
-
 function validation() {
   if (name.validity.valid && password.validity.valid && email.validity.valid && telephone.validity.valid) {
       return true
      }
      return false
 }
+
+
 
 function loadUsers() {
   let xhttp = new XMLHttpRequest()
@@ -103,10 +131,13 @@ function loadUsers() {
   xhttp.send()
 }
 
+
+function createUser() {}
+
 button.addEventListener ('click',function(event) {
   event.preventDefault()
   if (validation()) {
-    let xhr = new XMLHttpRequest()
+    
     
     let user = {
       name: name.value,
@@ -122,33 +153,20 @@ button.addEventListener ('click',function(event) {
       }
     }
 
-    let displayUser1 = '<table border="1">'
+    
+
+      let displayUser1 = '<table border="1">'
         for (let key in user)  {
           displayUser1 += '<tr><td>' + key +'</td><td>' + user[key] +'</td></tr>' 
         }
         displayUser1 += '</table>'
-        alert(displayUser1)
 
 
-
-    xhr.open('POST', 'https://jsonplaceholder.typicode.com/users', true)
-    xhr.setRequestHeader('Content-type', 'application/json')
-    xhr.send(JSON.stringify(user))
-
-    xhr.onreadystatechange = function() {
-      
-      if (this.readyState == 4 && this.status == 201) {
-        let respond = JSON.parse(this.response)
-        let displayUser = '<table border="1">'
-        for (let key in respond)  {
-          displayUser += '<tr><td>' + key +'</td><td>' + respond[key] +'</td></tr>' 
-        }
-        displayUser += '</table>'
-        showUser.innerHTML = displayUser
-        
-        
-      }
-    }
+    modal.setContent(JSON.stringify(user))
+    modal.open()
+    //modal.sendXHTTP(JSON.stringify(user))
+    //optionsModal.footerButtons[0].handler(JSON.stringify(user))
+    
   }
 })
 

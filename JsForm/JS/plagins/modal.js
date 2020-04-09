@@ -4,7 +4,8 @@ Element.prototype.appendAfter = function(element) {
 
 
 function noop() {
-
+    modal.sendXHTTP(document.querySelector('[data-content]').innerHTML)
+    modal.close()
 }
 
 function _createModalFooter(buttons = []) {
@@ -96,6 +97,18 @@ $.modal = function(options) {
         },
         setContent(html) {
             $modal.querySelector('[data-content]').innerHTML = html
-        }
+        },
+        sendXHTTP(json) {
+            let xhr = new XMLHttpRequest()
+            xhr.open('POST', 'https://jsonplaceholder.typicode.com/users', true)
+            xhr.setRequestHeader('Content-type', 'application/json')
+            xhr.send(json)
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 201) {
+                    let respond = JSON.parse(this.response)
+                    console.log(respond)
+                }
+            }
+        },
     })
 }

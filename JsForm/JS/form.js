@@ -121,6 +121,16 @@ button.addEventListener ('click',function(event) {
         console.log(user.gender)
       }
     }
+
+    let displayUser1 = '<table border="1">'
+        for (let key in user)  {
+          displayUser1 += '<tr><td>' + key +'</td><td>' + user[key] +'</td></tr>' 
+        }
+        displayUser1 += '</table>'
+        alert(displayUser1)
+
+
+
     xhr.open('POST', 'https://jsonplaceholder.typicode.com/users', true)
     xhr.setRequestHeader('Content-type', 'application/json')
     xhr.send(JSON.stringify(user))

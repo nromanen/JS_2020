@@ -15,16 +15,14 @@
 
 .vmodal.open .modal-window {
     transform: translateY(100px);
-    transition: transform .5s ease-in;
-}
+}  
 
 .vmodal.open .modal-overlay {
     background: rgba(0, 0, 0, 0.5);
 }
 
 .vmodal.hide .modal-window {
-    transform: translateY(-200px);
-    transition: transform .5s ease-in;
+    transform: translateY(-300px);
 }
 
 .vmodal.hide .modal-overlay {
@@ -42,7 +40,7 @@
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0);
-    transition: background .5s ease-in;
+    transition: background-color .5s ease-in;
 
 }
 .modal-window {
@@ -50,9 +48,10 @@
     border-radius: 5px;
     background: rgb(255, 255, 255);
     margin:  auto;
-    transform: translateY(-200px);
-    
+    transform: translateY(-300px);
+    transition: transform .5s ease-in;
 }
+
 .modal-header {
     padding: 5px 10px;
     display: flex;

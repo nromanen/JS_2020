@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="css/task.css">
     <link rel="stylesheet" href="css/config.css">
-
+    <link rel="stylesheet" href="css/rmodal.css">
 
 
 </head>
@@ -40,6 +40,7 @@
 
                 </fieldset>
                 <input type="submit" value="Save config" id="saveConfig">
+                <span id="warning"></span>
             </form>
         </div>
 
@@ -52,6 +53,7 @@
                 <button id="generateEx">Generate example</button>
                 <div id="example"></div>
                 <input type="text" id="answer" placeholder="Write your answer">
+                <span id="specification"></span>
             </div>
             <div class="footer">
                 <button id="checkYourself">Check yourself</button>
@@ -68,7 +70,12 @@
             <p><button id="refresh">Refresh statistic</button></p>
         </div>
 
+
+        
+
     </div>
+    <script src="js/base.js"></script>
+    <script src="js/modalResult.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>

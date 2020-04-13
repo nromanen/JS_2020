@@ -1,7 +1,10 @@
 'use strict'
 
+const modalResult = $.modalResult()
+
+
+
 function getCheckboxesMinMax(event) {
-    event.preventDefault()
     
     let min = Number(from.value)
     let max = Number(to.value)    
@@ -14,16 +17,34 @@ function getCheckboxesMinMax(event) {
         }
     }
 
-    let configuration = {
-        min,
-        max,
-        checkboxes: chedboxesChecked
-    }
-    console.log(configuration)
-    sessionStorage.setItem('configuration', JSON.stringify(configuration))
-    console.log(sessionStorage.getItem('configuration'))
+    if (from.value === '') {
+        event.preventDefault()
+        warning.innerHTML = 'Choose minimum number'
+    } else if (to.value === '') {
+        event.preventDefault()
+        warning.innerHTML = 'Choose maximum number'
+    } else if (chedboxesChecked.length === 0 ) {
+        event.preventDefault()
+        warning.innerHTML = 'Choose minimum one operation'
+    } else {
+        event.preventDefault()
+        let configuration = {
+            min,
+            max,
+            checkboxes: chedboxesChecked
+            }
 
-    return configuration
+            warning.innerHTML = `Your configuration : 
+            min = ${configuration.min}
+            max = ${configuration.max}
+            operations = ${configuration.checkboxes}`
+    
+        console.log(configuration)
+        sessionStorage.setItem('configuration', JSON.stringify(configuration))
+        console.log(sessionStorage.getItem('configuration'))
+        }               
+    
+    return 
 }
 
 saveConfig.addEventListener('click', getCheckboxesMinMax)
@@ -46,6 +67,7 @@ function generateExample() {
 
 
     let res
+    specification.innerHTML = ''
 
     switch (sign) {
         case '+' :
@@ -64,9 +86,14 @@ function generateExample() {
             break;
 
         case '/' :
-        res = a / b 
-        console.log(res) 
-            break;
+            specification.innerHTML = '  there should be two decimal places'
+            if (b === 0) {
+                res = 0
+            } else {
+                res = Number((a / b).toFixed(2))
+                console.log(res)
+            } 
+                break;
     
         default:
             break;
@@ -78,8 +105,10 @@ function generateExample() {
     }
     console.log((example))
     sessionStorage.setItem('example',JSON.stringify(example))
+    document.querySelector('#answer').focus()
 
-    return example
+
+    return 
     
 }
 
@@ -120,6 +149,13 @@ checkYourself.addEventListener('click', function() {
     generateExample()
     document.querySelector('#answer').value = ''
 
+})
+
+document.querySelector('#answer').addEventListener('keyup', function(event) {
+    if (event.keyCode == 13) {
+        checkYourself.click()
+        this.value = ''
+    }
 })
 
 

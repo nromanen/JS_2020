@@ -41,3 +41,10 @@ h1 {
     padding: 20px;
 }
 
+ #specification {
+    color: blue;
+}
+
+#warning {
+    color: red;
+}

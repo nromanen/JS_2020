@@ -1,0 +1,43 @@
+.container {
+    /* max-width: 600px; */
+}
+
+.main {
+    border: 2px solid gray;
+    margin: 20px;
+    padding: 20px;
+}
+
+
+fieldset {
+    display: inline-block;
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid gray;
+}
+.containerConfig {
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid gray;
+    
+
+}
+h1 {
+    margin: auto; 
+    padding: 20px;
+    text-align: center;
+}
+#saveConfig {
+    display: block;
+    margin: 20px;
+}
+#example {
+    display: inline;
+}
+
+.containerResults {
+    border: 2px solid gray;
+    margin: 20px;
+    padding: 20px;
+}
+

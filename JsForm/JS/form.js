@@ -23,6 +23,7 @@
   ], 
 }
 
+
 const modal = $.modal(optionsModal)
 
 
@@ -149,7 +150,6 @@ button.addEventListener ('click',function(event) {
     for (let i = 0; i < genders.length; i++) {
       if (genders[i].checked) {
         user.gender = genders[i].value
-        console.log(user.gender)
       }
     }
 
@@ -162,11 +162,10 @@ button.addEventListener ('click',function(event) {
         displayUser1 += '</table>'
 
 
-    modal.setContent(JSON.stringify(user))
+    modal.setContent(displayUser1)
+    modal.setDataContent(JSON.stringify(user))
     modal.open()
-    //modal.sendXHTTP(JSON.stringify(user))
-    //optionsModal.footerButtons[0].handler(JSON.stringify(user))
-    
+    //modal.sendXHTTP(JSON.stringify(user))    
   }
 })
 

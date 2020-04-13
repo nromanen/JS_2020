@@ -4,7 +4,8 @@ Element.prototype.appendAfter = function(element) {
 
 
 function noop() {
-    modal.sendXHTTP(document.querySelector('[data-content]').innerHTML)
+    //modal.sendXHTTP(document.querySelector('[data-content]').innerHTML)
+    modal.sendXHTTP(document.querySelector('[data-content]').dataset.content)
     modal.close()
 }
 
@@ -33,7 +34,7 @@ function _createModal(options) {
     const modal = document.createElement('div')
     modal.classList.add('vmodal')
     modal.insertAdjacentHTML('afterbegin', `
-        <div class="modal-overlay" data-close="true">
+        <div class="modal-overlay"321>
             <div class="modal-window" style="width: ${options.width || DEFAULT_WIDTH}">
                 <div class="modal-header">
                     <span class="modal-title">${options.title || 'window'}</span>
@@ -110,5 +111,9 @@ $.modal = function(options) {
                 }
             }
         },
+        setDataContent(stringJson) {
+            document.querySelector('[data-content]').dataset.content = stringJson
+            console.log(document.querySelector('[data-content]').dataset.content)
+        }
     })
 }

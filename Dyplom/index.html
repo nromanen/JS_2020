@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cehck your knolidge from math</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/task.css">
+    <link rel="stylesheet" href="css/config.css">
+
+
+
+</head>
+<body>
+    <div class="container">
+
+        <div class="main">
+            <button id="configTask" onclick="document.location='config.html'">Configuration</button>
+            <button id="task" onclick="document.location='task.html'">task</button>
+            <button id="results">results</button>
+            <button id="description">description</button>
+        </div>
+
+        <div class="containerConfig">
+            <h1>Configuration</h1>
+            <form action="" name="config">
+                <fieldset>
+                    <legend>Input numbers</legend>
+                    <p><label for="from">Min number</label></p>
+                    <p><input type="number" id="from" required></p>
+                    <p><label for="to">Max number</label></p>
+                    <p><input type="number" id="to" required></p>
+                </fieldset>
+                <fieldset>
+                    <legend>Choose operation</legend>
+                    <p><label><input type="checkbox" class="checkbox" id="addition" value="+"> Addition</label></p>
+                    <p><label><input type="checkbox" class="checkbox" id="substruction" value="-"> Substruction</label></p>
+                    <p><label><input type="checkbox" class="checkbox" id="multiply" value="*"> Multiply</label></p>
+                    <p><label><input type="checkbox" class="checkbox" id="divide" value="/">  Divide</label></p>
+
+                </fieldset>
+                <input type="submit" value="Save config" id="saveConfig">
+            </form>
+        </div>
+
+
+        <div class="containerTask">
+            <div class="header">
+                <h1>Task</h1>
+            </div>
+            <div class="content">
+                <button id="generateEx">Generate example</button>
+                <div id="example"></div>
+                <input type="text" id="answer" placeholder="Write your answer">
+            </div>
+            <div class="footer">
+                <button id="checkYourself">Check yourself</button>
+                <div id="check"></div>
+            </div>
+        </div>
+
+
+        <div class="containerResults">
+            <h1>Results</h1>
+            <p><button id="statistic">Show statistic</button></p>
+            <p><span>Correct ones</span><div id="correct"></div></p>
+            <p><span>Wrong ones</span><div id="wrong"></div></p>
+            <p><button id="refresh">Refresh statistic</button></p>
+        </div>
+
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>

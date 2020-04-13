@@ -1,0 +1,33 @@
+.containerTask {
+    border: 2px solid gray;
+    margin: 20px;
+    padding: 20px;
+}
+
+.header {
+    /* border: 2px solid gray; */
+    margin: 20px;
+    padding: 20px;
+}
+
+.content {
+    border: 2px solid gray;
+    margin: 20px;
+    padding: 20px;
+}
+
+.footer {
+    border: 2px solid gray;
+    margin: 20px;
+    padding: 20px;
+}
+h1 {
+    text-align: center;
+}
+
+
+.container {
+    border: 2px solid gray;
+    margin: 20px;
+    padding: 20px;
+}

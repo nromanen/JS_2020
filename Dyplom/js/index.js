@@ -160,21 +160,35 @@ document.querySelector('#answer').addEventListener('keyup', function(event) {
 
 
 statistic.addEventListener('click', function() {
-    let stat = JSON.parse(localStorage.getItem('statistic'))
+    let stat = JSON.parse(localStorage.getItem('statistic')) 
 
     if (stat) {
-        correct.innerHTML = stat.rightAnswer
-        wrong.innerHTML = stat.wrongAnswer
+        // correct.innerHTML = stat.rightAnswer
+        // wrong.innerHTML = stat.wrongAnswer
     } else {
-        correct.innerHTML = 0
-        wrong.innerHTML = 0
+        stat = {
+            rightAnswer: 0,
+            wrongAnswer: 0
+        }
+        // correct.innerHTML = 0
+        // wrong.innerHTML = 0
     }
+    
+
+    let statTable = `
+    <p><span>Correct ones</span><div id="correct">${stat.rightAnswer}</div></p>
+    <p><span>Wrong ones</span><div id="wrong">${stat.wrongAnswer}</div></p>
+    `
+
+    modalResult.setcontent(statTable)
+    modalResult.open()
+
 })
 
 
-refresh.addEventListener('click', function() {
-    localStorage.removeItem('statistic')
-    correct.innerHTML = ''
-    wrong.innerHTML = ''
+// refresh.addEventListener('click', function() {
+//     localStorage.removeItem('statistic')
+//     correct.innerHTML = ''
+//     wrong.innerHTML = ''
 
-})
+// })

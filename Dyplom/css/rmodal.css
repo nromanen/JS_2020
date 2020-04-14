@@ -6,12 +6,16 @@
     bottom: 0;
     opacity: 0;
     background: rgba(0, 0, 0, 0);
+    transition: background-color .5s ease-in ;
 }
 
 .modal-window {
     width:  500px;
     background: rgb(255, 255, 255);
-    margin: 200px auto;
+    transform: translateY(-300px);
+    transition: transform .5s ease-in;
+    margin: auto;
+    border-radius: 5px;
 }
 
 .modal-window, .modal-overlay {
@@ -26,5 +30,28 @@
 }
 
 .rmodal.open .modal-overlay {
-    background: rgba(0, 0, 0, 0.5);
+
+     background: rgba(0, 0, 0, 0.5);
+}
+
+.rmodal.open .modal-window {
+    transform: translateY(200px);
+}
+
+.modal-close {
+    cursor: pointer;
+}
+
+.rmodal.hiding .modal-overlay,
+.rmodal.hiding .modal-window {
+    z-index: 1000;
+    opacity: 1;
+}
+
+.rmodal.hiding .modal-window {
+    transform: translateY(-300);
+}
+
+.rmodal.hiding .modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
 }

@@ -77,7 +77,6 @@ $.modal = function(options) {
                 closing = false
             },ANIMATION_SPEED)
         },
-        destroy() {},
         
     }
 

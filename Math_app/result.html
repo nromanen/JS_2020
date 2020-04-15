@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Математика</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="shortcut icon" href="src/img/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+	<header class="header">
+		<div class="logo">
+			<a href="index.html"><img src="src/img/logo.png" alt="" class="logo-img"></a>
+		</div>
+		<div class="header-name">
+			<h1>Математичний тренажер</h1>
+		</div>
+		<nav class="nav">
+			<ul class="nav-elements">
+				<a href="option.html" class="nav-link">
+					<li class="nav-li">Умови</li>
+				</a>
+				<a href="task.html" class="nav-link">
+					<li class="nav-li">Завдання</li>
+				</a>
+				<a href="result.html" class="nav-link">
+					<li class="nav-li">Результати</li>
+				</a>
+			</ul>
+		</nav>
+	</header>
+	<main class="main">
+		<div class="results">
+			<div class="rightAnswers">
+				<p>Вірні відповіді</p>
+			</div>
+			<div class="wrongAnswers">
+				<p>Невірні відповіді</p>
+			</div>
+		</div>
+		<div class="answers-list">
+			<div class="right-answers-list">
+				<button class="start-button btn-right-answers-list">Показати приклади</button>
+				<p class="right-answers-list-print"></p>
+			</div>
+			<div class="wrong-answers-list">
+				<button class="start-button btn-wrong-answers-list">Показати приклади</button>
+				<p class="wrong-answers-list-print"></p>
+			</div>
+		</div>
+		<div class="remove-result">
+			<button class="start-button btn-remove-result">Очистити статистику</button>
+		</div>
+	</main>
+	<footer class="footer">
+	</footer>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+	<script src="script.js"></script>
+</body>
+
+</html>

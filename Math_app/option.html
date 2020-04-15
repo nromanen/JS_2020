@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Математика</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="shortcut icon" href="src/img/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+	<header class="header">
+		<div class="logo">
+			<a href="index.html"><img src="src/img/logo.png" alt="" class="logo-img"></a>
+		</div>
+		<div class="header-name">
+			<h1>Математичний тренажер</h1>
+		</div>
+		<nav class="nav">
+			<ul class="nav-elements">
+				<a href="option.html" class="nav-link">
+					<li class="nav-li">Умови</li>
+				</a>
+				<a href="task.html" class="nav-link">
+					<li class="nav-li">Завдання</li>
+				</a>
+				<a href="result.html" class="nav-link">
+					<li class="nav-li">Результати</li>
+				</a>
+			</ul>
+		</nav>
+	</header>
+	<main class="main">
+		<div class="title">
+			<form action="">
+				<div class="form-inside">
+					<div class="first-input">
+						<p>Введіть перше число:</p>
+						<input type="number" class="input first-number" required>
+					</div>
+					<div>
+						<p>Введіть друге число:</p>
+						<input type="number" class="input second-number" required>
+					</div>
+					<div class="actions">
+						<p>Виберіть дії:</p>
+						<select multiple size="4" name="math-operation" class="select-form" required>
+							<option class="icon-plus" value="+"></option>
+							<option class="icon-minus" value="-"></option>
+							<option class="icon-mul" value="*"></option>
+							<option class="icon-div" value="/"></option>
+						</select>
+					</div>
+					<!-- <div class="actions">
+						<p>Виберіть дії:</p>
+						<div>
+							<input type="image" src="src/img/plus.png" class="math-operation" value="+">
+							<input type="image" src="src/img/minus.png" class="math-operation" value="-">
+						</div>
+						<div>
+							<input type="image" src="src/img/multiply.png" class="math-operation" value="*">
+							<input type="image" src="src/img/divide.png" class="math-operation" value="/">
+						</div> -->
+				</div>
+				<div class="start">
+					<button class="start-button save-button">Зберегти</button>
+					<a href="task.html"><button type="button" class="start-button start-study">Розпочати
+							навчання</button></a>
+				</div>
+			</form>
+		</div>
+	</main>
+	<footer class="footer">
+
+	</footer>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+	<script src="script.js"></script>
+</body>
+
+</html>

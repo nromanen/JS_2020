@@ -37,6 +37,9 @@ function _createModal(options) {
 }
 
 
+function noop () {
+
+}
 
 
 function _createFooter(buttons = []) {
@@ -55,6 +58,7 @@ function _createFooter(buttons = []) {
         const $btn = document.createElement('button')
         $btn.textContent = btn.text
         $btn.classList.add(`btn-${btn.type || 'secondary'}`)
+        $btn.setAttribute('data-btn', btn.data || '')
         $btn.onclick = btn.handler || noop
 
         footer.appendChild($btn)
@@ -75,17 +79,6 @@ $.modalResult = function(options) {
     let closing = false
     let destroyed = false
     
-    
-
-
-
-    function noop () {
-
-    }
-
-
-    
-
 
 
     const modal = {

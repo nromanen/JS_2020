@@ -1,5 +1,62 @@
 'use strict'
 
+let $containerTask = document.querySelector('.containerTask'),
+    $containerConfig = document.querySelector('.containerConfig'),
+    $main = document.querySelector('.main')
+
+
+
+
+
+configTask.addEventListener('click', () => {
+    $containerConfig.style="display: block"
+    $main.style="display: none"
+})
+
+
+task.addEventListener('click', () => {
+    $containerTask.style="display: block"
+    $main.style="display: none"
+
+})
+
+
+exit.addEventListener('click', () => {
+    $containerTask.style="display: none"
+    $main.style="display: block"
+
+})
+
+
+exitConfig.addEventListener('click', () => {
+    $containerConfig.style="display: none"
+    $main.style="display: block"
+})
+
+
+statistic.addEventListener('click', function() {
+    let stat = JSON.parse(localStorage.getItem('statistic')) 
+
+    if (stat === null) {
+        stat = {
+            rightAnswer: 0,
+            wrongAnswer: 0
+        }
+    }
+    
+
+    let statContent = `
+    <p><span>Correct ones</span><div id="correct">${stat.rightAnswer}</div></p>
+    <p><span>Wrong ones</span><div id="wrong">${stat.wrongAnswer}</div></p>
+    `
+
+    statisticModal.setcontent(statContent)
+    statisticModal.open()
+
+})
+
+
+
 
 
 
@@ -8,7 +65,7 @@ const statisticModal = $.modalResult({
     closable: true,
     width: '400px',
     footerButtons: [ 
-        {text: 'Cancel',
+        {text: 'Close',
         type: 'primary',
         handler() {
             statisticModal.close()
@@ -32,6 +89,7 @@ const exampleModal = $.modalResult({
     footerButtons: [ {
             text: 'Ok',
             type: 'primary',
+            data: 1,
             handler() {
                 exampleModal.close()
                 document.querySelector('#answer').focus()
@@ -50,8 +108,11 @@ const configModal = $.modalResult({
             type: 'primary',
             handler() {
                 configModal.close()
-            }
-    }]
+                $containerConfig.style="display: none"
+                $main.style="display: block"
+
+                }
+        }]
 })
 
 
@@ -75,7 +136,7 @@ function getOptionsMinMax(event) {
     } else if (to.value === '') {
         event.preventDefault()
         warning.innerHTML = 'Choose maximum number'
-    } else if (from.value > to.value) {
+    } else if (+from.value > +to.value) {
         event.preventDefault()
         warning.innerHTML = 'Minimun must bee less then maximum'
     } else if (chedboxesChecked.length === 0 ) {
@@ -196,7 +257,8 @@ checkYourself.addEventListener('click', function() {
 
     let statistic
     let example = JSON.parse(sessionStorage.getItem('example'))
-    let correctAnswer 
+    let correctAnswer
+        
     
 
 
@@ -214,9 +276,11 @@ checkYourself.addEventListener('click', function() {
     if (Number(document.querySelector('#answer').value) == example.res) {
         statistic.rightAnswer += 1 
         correctAnswer = 'right'
+        soundRightAnswer()
     } else {
         statistic.wrongAnswer += 1 
         correctAnswer = 'wrong'
+        soundWrongAnswer()
     }
 
 
@@ -230,9 +294,10 @@ checkYourself.addEventListener('click', function() {
     document.querySelector('#answer').value = ''
 
 
-    exampleModal.setcontent(`
-    <p>You are ${correctAnswer}</p> 
+    exampleModal.setcontent(`<div id="modal-answer" class="${correctAnswer}">
+    <p>You are ${correctAnswer} !</p> 
     <p>${example.body}${example.res}</p>
+    </div>
     `)
     exampleModal.open()
 
@@ -247,33 +312,17 @@ document.querySelector('#answer').addEventListener('keyup', (event) => {
 
 
 
-
-
-statistic.addEventListener('click', function() {
-    let stat = JSON.parse(localStorage.getItem('statistic')) 
-
-    if (stat === null) {
-        stat = {
-            rightAnswer: 0,
-            wrongAnswer: 0
-        }
+function soundRightAnswer() {
+    let audio = new Audio(); 
+    audio.src = '/Users/vitalii/Downloads/line_open.mp3'; 
+    audio.play(); 
     }
-    
 
-    let statContent = `
-    <p><span>Correct ones</span><div id="correct">${stat.rightAnswer}</div></p>
-    <p><span>Wrong ones</span><div id="wrong">${stat.wrongAnswer}</div></p>
-    `
-
-    statisticModal.setcontent(statContent)
-    statisticModal.open()
-
-})
+function soundWrongAnswer() {
+    let audio = new Audio(); 
+    audio.src = '/Users/vitalii/Downloads/100-k-1-the-same-answer.mp3'; 
+    audio.play(); 
+    }
 
 
-// document.querySelector('#refresh').addEventListener('click', function() {
-//     localStorage.removeItem('statistic')
-//     correct.innerHTML = ''
-//     wrong.innerHTML = ''
 
-// })

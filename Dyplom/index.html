@@ -12,13 +12,14 @@
 
 </head>
 <body>
+    <h1>Hello friend !!! Lets go check your knowlidg from math ;) </h1>
     <div class="container">
 
         <div class="main">
-            <button id="configTask" onclick="document.location='config.html'">Configuration</button>
-            <button id="task" onclick="document.location='task.html'">task</button>
-            <button id="results">results</button>
-            <button id="description">description</button>
+            <button id="configTask">Configuration</button>
+            <button id="task">task</button>
+            <button id="statistic">Show statistic</button>
+            <button id="description" >description</button>
         </div>
 
         <div class="containerConfig">
@@ -40,6 +41,7 @@
 
                 </fieldset>
                 <input type="submit" value="Save config" id="saveConfig">
+                <button id="exitConfig" class="btn-danger">Close</button>
                 
                 <h3 id="warning"></h3>
                 <h3 id="showConfig"></h3>
@@ -58,18 +60,12 @@
                 <span id="specification"></span>
             </div>
             <div class="footer">
-                <button id="checkYourself">Check yourself</button>
+                <button id="checkYourself" class="btn-primary">Check yourself</button>
+                <button id="exit" class="btn-danger">Close</button>
+
             </div>
         </div>
 
-
-        <div class="containerResults">
-            <h1>Results</h1>
-            <p><button id="statistic">Show statistic</button></p>
-            <!-- <p><span>Correct ones</span><div id="correct"></div></p>
-            <p><span>Wrong ones</span><div id="wrong"></div></p>
-            <p><button id="refresh">Refresh statistic</button></p>
-        </div> -->
 
 
         

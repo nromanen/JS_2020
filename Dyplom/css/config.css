@@ -1,11 +1,21 @@
+body {
+    background-image: url(/Users/vitalii/Downloads/500_F_198011818_ezUwXVQRiUWY7g4EQlwGzvvCjtvsSuJw.jpg);
+}
+
 .container {
-    /* max-width: 600px; */
+    max-width: 600px;
+    background-color: rgb(72, 195, 233);
+    margin: auto;
+    border-radius: 5px;
+    border-color: royalblue;
 }
 
 .main {
-    border: 2px solid gray;
+    border: 2px solid royalblue;
     margin: 20px;
     padding: 20px;
+    border-radius: 5px;
+
 }
 
 
@@ -13,32 +23,49 @@ fieldset {
     display: inline-block;
     margin: 20px;
     padding: 20px;
-    border: 2px solid gray;
+    border: 2px solid royalblue;
+    border-radius: 5px;
+
 }
 .containerConfig {
     margin: 20px;
     padding: 20px;
-    border: 2px solid gray;
-    
+    border: 2px solid royalblue;
+    display: none;
+    border-radius: 5px;
 
 }
+
+.containerConfig show {
+    display: block;
+}
+
 h1 {
     margin: auto; 
     padding: 20px;
     text-align: center;
 }
+
 #saveConfig {
     display: block;
     margin: 20px;
 }
+
+#exitConfig {
+    display: block;
+    margin: 20px;
+}
+
 #example {
     display: inline;
 }
 
 .containerResults {
-    border: 2px solid gray;
+    border: 2px solid royalblue;
     margin: 20px;
     padding: 20px;
+    border-radius: 5px;
+
 }
 
  #specification {

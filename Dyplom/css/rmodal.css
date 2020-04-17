@@ -61,3 +61,17 @@
     font-size: 1.5em;
     font-weight: bold;
 }
+
+.modal-body .right {
+    border-radius: 5px;
+    background-color: rgb(65, 236, 65);
+}
+
+.modal-body .wrong {
+    border-radius: 5px;
+    background-color: rgb(246, 29, 29);
+}
+
+.modal-body p {
+    padding: 5px;
+}

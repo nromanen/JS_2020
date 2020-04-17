@@ -1,7 +1,9 @@
 .containerTask {
-    border: 2px solid gray;
+    border: 2px solid royalblue;
     margin: 20px;
     padding: 20px;
+    display: none;
+    border-radius: 5px;
 }
 
 .header {
@@ -11,15 +13,19 @@
 }
 
 .content {
-    border: 2px solid gray;
+    border: 2px solid royalblue;
     margin: 20px;
     padding: 20px;
+    border-radius: 5px;
+
 }
 
 .footer {
-    border: 2px solid gray;
+    border: 2px solid royalblue;
     margin: 20px;
     padding: 20px;
+    border-radius: 5px;
+
 }
 h1 {
     text-align: center;
@@ -27,7 +33,9 @@ h1 {
 
 
 .container {
-    border: 2px solid gray;
+    border: 2px solid royalblue;
     margin: 20px;
     padding: 20px;
+    border-radius: 5px;
+
 }

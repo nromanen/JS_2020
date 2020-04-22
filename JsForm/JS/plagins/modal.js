@@ -34,7 +34,7 @@ function _createModal(options) {
     const modal = document.createElement('div')
     modal.classList.add('vmodal')
     modal.insertAdjacentHTML('afterbegin', `
-        <div class="modal-overlay"321>
+        <div class="modal-overlay" data-close="true">
             <div class="modal-window" style="width: ${options.width || DEFAULT_WIDTH}">
                 <div class="modal-header">
                     <span class="modal-title">${options.title || 'window'}</span>
@@ -108,9 +108,6 @@ $.modal = function(options) {
                 if (this.readyState == 4 && this.status == 201) {
                     let respond = JSON.parse(this.response)
                     console.log(respond)
-                    // sessionStorage.getItem('users')
-                    // let users = JSON.parse(sessionStorage.getItem('users'))
-                    // console.log(users)
                 }
             }
         },

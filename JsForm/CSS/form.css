@@ -2,35 +2,18 @@
 
 body {
   background-image: url(../images/sun-pattern.png);
-
+  line-height: normal;
 }
 
-.containerForm {
-  max-width: 500px;
-  border-radius: 20px;
-  background-color: rgb(172, 204, 206);
-  font-family: 'Raleway', sans-serif;
-  font-weight: 400;
-  padding: 20px;
-  margin: auto;
-  
-  
-}
+
+
 form {
-    border: 3px solid grey;
     border-radius: 20px;
-    
-    
+    margin: 20px;
+    padding: 20px;
 }
-.field {
-  margin: 20px;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 10px 10px silver;
-}
-.field:hover {
-  box-shadow: 10px 10px 10px 10px silver;
-}
+
+
 #name, #password, #email, #date_of_birthday, #telephone {
   font-size: large;
   width: 50%; /* Full width */
@@ -54,19 +37,31 @@ button {
     border-radius: 20px;
     font-size: large;
   }
+
   button:hover {
     opacity: 0.5;
   }
+
   #name:invalid:not(:placeholder-shown), #password:invalid:not(:placeholder-shown), #telephone:invalid:not(:placeholder-shown), #email:invalid:not(:placeholder-shown) {
     border: 2px dashed red;
   }
+
   #name:valid, #password:valid, #telephone:valid, #email:valid {
-      border: 2px solid rgb(201, 202, 201);
-    }
+      border: 2px solid rgb(17, 92, 230);
+  }
+
 .span {
   margin: 2em;
   color: red;
   font-weight: bold;
+}
+
+.modal-form-window.error {
+  border: 3px solid red;
+}
+
+#displayError {
+  margin: 0;
 }
 
 #showUser {
@@ -74,10 +69,62 @@ button {
   text-align: center;
 }
 
-#respond p {
+#response p {
   border: 1px solid black;
   border-radius: 3px;
   background-color: blanchedalmond;
   margin: 20px;
   padding-left: 20px;
+}
+
+
+.modal-form-window {
+  width: 400px;
+  margin: 100px auto;
+  background-color: rgba(255, 255, 255, 0);
+  transition: background-color .5s ease-in;
+  border-radius: 5px;
+}
+
+.modal-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color .5s ease-in;
+}
+
+.modal-form-window, .modal-form-overlay {
+  opacity: 0;
+  z-index: -1;
+}
+
+.containerForm.open .modal-form-overlay,
+.containerForm.open .modal-form-window {
+  opacity: 1;
+  z-index: 100;
+}
+
+.containerForm.hiding .modal-form-overlay,
+.containerForm.hiding .modal-form-window {
+  opacity: 1;
+  z-index: 100;
+}
+
+.containerForm.hiding .modal-form-overlay {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.containerForm.hiding .modal-form-window {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.containerForm.open .modal-form-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.containerForm.open .modal-form-window {
+  background-color: rgba(255, 255, 255, 1);
 }

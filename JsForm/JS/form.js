@@ -1,30 +1,10 @@
 'use strict'
 
- let optionsModal = {
-  title: 'Vitalii modal',
-  closable: true,
-  content: `
-  <h4>My modal is working</h4>
-  <p>Aaaaaaaaaaaaaaa</p>
-  `,
-  width: '400px',
-  footerButtons: [
-      {text: 'Ok', type: 'primary',
-      //  handler(json) {
-      //     console.log('Primari btn clicked')
-      //     modal.close()
-      // }
-    },
-      {text: 'Cancel', type: 'Danger', handler() {
-          console.log('Danger btn clicked')
-          modal.close()
-      }
-    }
-  ], 
-}
 
+const modalForm = $.modalForm()
+const url = 'https://jsonplaceholder.typicode.com/users'
+let displayUser = ``
 
-const modal = $.modal(optionsModal)
 
 
 
@@ -41,25 +21,25 @@ let respond = document.querySelector('#respond')
 
 function validateName(event) {
   let errorName = document.getElementById("errorName")
-    if (/^[A-Z][a-z]{1,14}$/.test(name.value)) {
-        name.setCustomValidity('')
-        errorName.innerHTML = ''
-        return true
-    }
-    else {
-        name.setCustomValidity('The name must begin with a capital letter, darling! :) ')
-        errorName.innerHTML = "Enter your name please :) "
-        return false
-    }
+    // if (/^[A-Z][a-z]{1,14}$/.test(name.value)) {
+    //     name.setCustomValidity('')
+    //     errorName.innerHTML = ''
+    //     return true
+    // }
+    // else {
+    //     name.setCustomValidity('The name must begin with a capital letter, darling! :) ')
+    //     errorName.innerHTML = "Enter your name please :) "
+    //     return false
+    // }
 
 
-    // if (name.validity.patternMismatch) {
-    //     name.setCustomValidity("The name must begin with a capital letter, darling! :) ")
-    //     errorName.innerHTML = "Please enter your name! :) "
-    //   } else {
-    //     name.setCustomValidity("")
-    //     errorName.innerHTML = ""
-    //  }
+    if (name.validity.patternMismatch) {
+        name.setCustomValidity("The name must begin with a capital letter, darling! :) ")
+        errorName.innerHTML = "Please enter your name! :) "
+      } else {
+        name.setCustomValidity("")
+        errorName.innerHTML = ""
+     }
 }
 
 function validatePassword(event) {
@@ -88,11 +68,11 @@ function validateEmail(event) {
 
 function validateTelephone(event) {
   let errorTelephone = document.getElementById('errorTelephone')
-    if (this.validity.patternMismatch) {
+    if (telephone.validity.patternMismatch) {
         telephone.setCustomValidity("I expect a telephone, darling!  :) ")
         errorTelephone.innerHTML = "Telephone must be in format xxx-xxx-xx-xx or (xxx) xxx xx xx"
       } else {
-        this.setCustomValidity("")
+        telephone.setCustomValidity("")
         errorTelephone.innerHTML = ""
       }
 }
@@ -134,14 +114,13 @@ function validation() {
 
 
 function loadUsers2 () {
-  let displayUser1 = ``
   let xhttp = new XMLHttpRequest()
     xhttp.onreadystatechange = () => {
      if (xhttp.readyState == 4 && xhttp.status == 200) {
         let respondUsers = JSON.parse(xhttp.response)
         sessionStorage.setItem('users', xhttp.response)
         respondUsers.forEach(element => {
-          displayUser1 += `
+          displayUser += `
           <p>Name : ${element.name}</p>
           <p>Username : ${element.username}</p>
           <p>Email : ${element.email}</p>
@@ -151,15 +130,14 @@ function loadUsers2 () {
           <br>
           `
         });
-        respond.innerHTML = displayUser1
+        response.innerHTML = displayUser
 
      }
     } 
-    xhttp.open('GET', 'https://jsonplaceholder.typicode.com/users', true)
+    xhttp.open('GET', url, true)
     xhttp.send()
 }
 
-function createUser() {}
 
 button.addEventListener ('click',function(event) {
   event.preventDefault()
@@ -172,37 +150,86 @@ button.addEventListener ('click',function(event) {
       phone: telephone.value,
       date: dateOfBirthday.value
     }
+
     let genders = document.getElementsByName('gender') 
     for (let i = 0; i < genders.length; i++) {
       if (genders[i].checked) {
         user.gender = genders[i].value
       }
     }
+    console.log(user)
 
+    let xhr = new XMLHttpRequest()
+    xhr.open('POST', url, true)
+    xhr.setRequestHeader('Content-type', 'application/json')
+    xhr.send(JSON.stringify(user))
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 201) {
+            let response = JSON.parse(this.response)
+            console.log(response)
+            let users = JSON.parse(sessionStorage.getItem('users'))
+            users.push(response)
+            sessionStorage.setItem('users', JSON.stringify(users))
+            displayUser += `
+            <p>Name : ${response.name}</p>
+            <p>Email : ${response.email}</p>
+            <p>Phone : ${response.phone}</p>
+            `
+            document.querySelector('#response').innerHTML = displayUser
+
+        }
+    }
     
 
-      let displayUser1 = '<table border="1">'
-        for (let key in user)  {
-          displayUser1 += '<tr><td>' + key +'</td><td>' + user[key] +'</td></tr>' 
-        }
-        displayUser1 += '</table>'
+      // let tableUser = '<table border="1">'
+      //   for (let key in user)  {
+      //     tableUser += '<tr><td>' + key +'</td><td>' + user[key] +'</td></tr>' 
+      //   }
+      //   tableUser += '</table>'
 
 
-    modal.setContent(displayUser1)
-    modal.setDataContent(JSON.stringify(user))
-    modal.open()
-    //modal.sendXHTTP(JSON.stringify(user))    
+      modalForm.close()
+   
+  } else {
+      displayError.innerHTML = 'Fill out the form'
+      document.querySelector('.modal-form-window').classList.add('error')
   }
+
 })
 
 
-name.addEventListener("change", validateName )
 
-password.addEventListener("change", validatePassword)
+function formError() {
+  document.querySelector('.modal-form-window').classList.remove('error')
+  displayError.innerHTML = ''
+}
 
-email.addEventListener("change", validateEmail)
 
-telephone.addEventListener("change", validateTelephone)
+name.addEventListener("blur", validateName )
+name.addEventListener('focus', () => {
+  errorName.innerHTML = ""
+  formError()
+})
+
+password.addEventListener("blur", validatePassword)
+password.addEventListener("focus", () => {
+  errorPassword.innerHTML = ""
+  formError()
+})
+
+email.addEventListener("blur", validateEmail)
+email.addEventListener("focus", () => {
+  errorEmail.innerHTML = ""
+  formError()
+})
+
+telephone.addEventListener("blur", validateTelephone)
+telephone.addEventListener("focus", () => {
+  errorTelephone.innerHTML = ""
+  formError()
+})
+
+
 
 // telephone.addEventListener('input', function(event) {
 //   switch(this.value.length) {

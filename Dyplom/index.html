@@ -12,19 +12,21 @@
 
 </head>
 <body>
-    <h1>Hello friend !!! Lets go check your knowlidg from math ;) </h1>
+    <h1>Hello friend !!! Lets go check your knowledge from math ;) </h1>
     <div class="container">
 
-        <div class="main">
-            <button id="configTask">Configuration</button>
-            <button id="task">task</button>
-            <button id="statistic">Show statistic</button>
-            <button id="description" >description</button>
-        </div>
+        <ul>
+            <li><a href="" id="configTask">Configuration</a></li>
+            <li><a href="" id="task">Task</a></li>
+            <li><a href="" id="statistic">Show statistic</a></li>
+            <li><a href="" id="description">Description</a></li>
+        </ul>
 
         <div class="containerConfig">
             <h1>Configuration</h1>
             <form action="" name="config">
+                <h3 id="warning"></h3>
+                <h3 id="showConfig"></h3>
                 <fieldset>
                     <legend>Input numbers</legend>
                     <p><label for="from">Min number</label></p>
@@ -40,11 +42,11 @@
                     <p><label><input type="checkbox" class="checkbox" id="divide" value="/">  Divide</label></p>
 
                 </fieldset>
-                <input type="submit" value="Save config" id="saveConfig">
-                <button id="exitConfig" class="btn-danger">Close</button>
+                <footer>
+                    <input type="submit" class="btn-primary" value="Save config" id="saveConfig">
+                    <button id="exitConfig" class="btn-danger">Close</button>
+                </footer>   
                 
-                <h3 id="warning"></h3>
-                <h3 id="showConfig"></h3>
             </form>
         </div>
 

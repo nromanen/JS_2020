@@ -108,30 +108,56 @@ function validation() {
 
 
 
-function loadUsers() {
+// function loadUsers() {
+//   let xhttp = new XMLHttpRequest()
+//   xhttp.onreadystatechange = () => {
+//      if (xhttp.readyState == 4 && xhttp.status == 200) {
+//         let respondUsers = JSON.parse(xhttp.response)
+//         respondUsers.forEach(worker => {
+//           function printUser(element) {
+//             if (typeof(element) === 'object') {
+//               for (let key in element) {
+//                 console.log(key + ' : ')
+//                 printUser(element[key])
+//               }
+//             } else {
+//                 console.log(element)
+//             }
+//           }
+//           printUser(worker)
+//         });     
+//       }
+//   } 
+//   xhttp.open('GET', 'https://jsonplaceholder.typicode.com/users', true)
+//   xhttp.send()
+// }
+
+
+function loadUsers2 () {
+  let displayUser1 = ``
   let xhttp = new XMLHttpRequest()
-  xhttp.onreadystatechange = () => {
+    xhttp.onreadystatechange = () => {
      if (xhttp.readyState == 4 && xhttp.status == 200) {
         let respondUsers = JSON.parse(xhttp.response)
-        respondUsers.forEach(worker => {
-          function printUser(element) {
-            if (typeof(element) === 'object') {
-              for (let key in element) {
-                console.log(key + ' : ')
-                printUser(element[key])
-              }
-            } else {
-                console.log(element)
-            }
-          }
-          printUser(worker)
-        });     
-      }
-  } 
-  xhttp.open('GET', 'https://jsonplaceholder.typicode.com/users', true)
-  xhttp.send()
-}
+        sessionStorage.setItem('users', xhttp.response)
+        respondUsers.forEach(element => {
+          displayUser1 += `
+          <p>Name : ${element.name}</p>
+          <p>Username : ${element.username}</p>
+          <p>Email : ${element.email}</p>
+          <p>Phone : ${element.phone}</p>
+          <p>Website : ${element.website}</p>
+          <p>City : ${element.address.city}</p>
+          <br>
+          `
+        });
+        respond.innerHTML = displayUser1
 
+     }
+    } 
+    xhttp.open('GET', 'https://jsonplaceholder.typicode.com/users', true)
+    xhttp.send()
+}
 
 function createUser() {}
 

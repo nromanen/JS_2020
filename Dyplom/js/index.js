@@ -6,38 +6,60 @@ let $containerTask = document.querySelector('.containerTask'),
 
 
 
+configTask.addEventListener('click', (event) => {
+    event.preventDefault()
+
+    if ($containerConfig.style.display === "block") {
+        $containerConfig.style="display: none"
+        configTask.classList.remove('active')
 
 
-configTask.addEventListener('click', () => {
-    $containerConfig.style="display: block"
-    $main.style="display: none"
+    } else {
+        $containerConfig.style="display: block"
+        configTask.classList.add('active')
+        task.classList.remove('active')
+    }
+
+
+    $containerTask.style="display: none"
 })
 
 
 task.addEventListener('click', () => {
-    $containerTask.style="display: block"
-    $main.style="display: none"
+    event.preventDefault()
 
+    if ($containerTask.style.display === "block") {
+        $containerTask.style = "display: none"
+        task.classList.remove('active')
+
+    } else {
+        $containerTask.style="display: block"
+        task.classList.add('active')
+        configTask.classList.remove('active')
+
+    }
+
+    $containerConfig.style="display: none"
 })
 
 
 exit.addEventListener('click', () => {
     $containerTask.style="display: none"
-    $main.style="display: block"
 
 })
 
 
-exitConfig.addEventListener('click', () => {
+exitConfig.addEventListener('click', (event) => {
+    event.preventDefault()
     $containerConfig.style="display: none"
-    $main.style="display: block"
 })
 
 
 statistic.addEventListener('click', function() {
+    event.preventDefault()
     let stat = JSON.parse(localStorage.getItem('statistic')) 
 
-    if (stat === null) {
+    if (!stat) {
         stat = {
             rightAnswer: 0,
             wrongAnswer: 0
@@ -119,6 +141,8 @@ const configModal = $.modalResult({
 
 function getOptionsMinMax(event) {
     
+    event.preventDefault()
+
     let min = Number(from.value)
     let max = Number(to.value)    
     
@@ -130,20 +154,21 @@ function getOptionsMinMax(event) {
         }
     }
 
+    let error = ''
+
     if (from.value === '') {
-        event.preventDefault()
-        warning.innerHTML = 'Choose minimum number'
-    } else if (to.value === '') {
-        event.preventDefault()
-        warning.innerHTML = 'Choose maximum number'
-    } else if (+from.value > +to.value) {
-        event.preventDefault()
-        warning.innerHTML = 'Minimun must bee less then maximum'
-    } else if (chedboxesChecked.length === 0 ) {
-        event.preventDefault()
-        warning.innerHTML = 'Choose minimum one operation'
-    } else {
-        event.preventDefault()
+        error += 'Choose minimum number <br>'
+    } if (to.value === '') {
+        error += 'Choose maximum number <br>'
+    } if (+from.value > +to.value) {
+        error += 'Minimun must bee less then maximum \n'
+    } if (chedboxesChecked.length === 0 ) {
+        error += 'Choose minimum one operation'
+    } 
+    if (error.length > 0) {
+        warning.innerHTML = error
+    } 
+    else  {
         let configuration = {
             min,
             max,
@@ -157,13 +182,12 @@ function getOptionsMinMax(event) {
             <p>operations = ${configuration.operations}</p>
             `
 
-            warning.innerHTML = ''
-    
         sessionStorage.setItem('configuration', JSON.stringify(configuration))
 
         configModal.setcontent(showConfig)
         configModal.open()
-        }          
+        }    
+
         
     return 
 }
@@ -178,13 +202,63 @@ function generateExample() {
     let configObj = JSON.parse(sessionStorage.getItem('configuration'))
     let a = Math.floor(configObj.min + Math.random() * (configObj.max + 1 - configObj.min))
     let b = Math.floor(configObj.min + Math.random() * (configObj.max + 1 - configObj.min))
-
     let signId = Math.floor(Math.random() * configObj.operations.length)
     let sign = configObj.operations[signId]
+    let stringExample = `${a} ${sign} ${b} = `
+
+    if (sign ==='/') {
+        specification.innerHTML = ' must be 2 decimal prices'
+    } else {
+        specification.innerHTML = ''
+    }
+
+    document.querySelector('#example').innerHTML = stringExample
+
+    let example = {
+        a,
+        b,
+        sign
+    }
+
+    sessionStorage.setItem('example', JSON.stringify(example))
+
+    document.querySelector('#answer').focus()
+
+    let $generateEx = document.querySelector('#generateEx')
+    $generateEx.setAttribute('disabled','')
+    
+}
+
+
+
+generateEx.addEventListener('click', generateExample)
+
+
+
+
+checkYourself.addEventListener('click', function() {
+
+    let statistic
+    let example = JSON.parse(sessionStorage.getItem('example'))
+    let correctAnswer
     let res
+    let a = Number(example.a),
+        b = Number(example.b)
+        
     
 
-    switch (sign) {
+
+    if (JSON.parse(localStorage.getItem('statistic')) !== null) {
+        statistic = JSON.parse(localStorage.getItem('statistic'))
+    } else {
+        statistic = {
+            rightAnswer: 0,
+            wrongAnswer: 0
+        }
+    }
+
+
+    switch (example.sign) {
         case '+' :
         res = a + b
             break;
@@ -208,7 +282,6 @@ function generateExample() {
                 a = b
                 b = c
             }
-            specification.innerHTML = '  there should be two decimal places'
             if (b === 0) {
                 res = 0
             } else {
@@ -221,59 +294,7 @@ function generateExample() {
     }
 
 
-
-
-    let stringExample = `${a} ${sign} ${b} = `
-
-    document.querySelector('#example').innerHTML = stringExample
-
-    specification.innerHTML = ''
-
-
-    let example = {
-        body: stringExample,
-        res
-    }
-    console.log((example))
-
-
-    sessionStorage.setItem('example',JSON.stringify(example))
-    document.querySelector('#answer').focus()
-
-
-    let $generateEx = document.querySelector('#generateEx')
-    $generateEx.setAttribute('disabled','')
-    
-}
-
-
-
-generateEx.addEventListener('click', generateExample)
-
-
-
-
-checkYourself.addEventListener('click', function() {
-
-    let statistic
-    let example = JSON.parse(sessionStorage.getItem('example'))
-    let correctAnswer
-        
-    
-
-
-    if (JSON.parse(localStorage.getItem('statistic')) !== null) {
-        statistic = JSON.parse(localStorage.getItem('statistic'))
-    } else {
-        statistic = {
-            rightAnswer: 0,
-            wrongAnswer: 0
-        }
-    }
-
-
-
-    if (Number(document.querySelector('#answer').value) == example.res) {
+    if (Number(document.querySelector('#answer').value) === res) {
         statistic.rightAnswer += 1 
         correctAnswer = 'right'
         soundRightAnswer()
@@ -285,8 +306,6 @@ checkYourself.addEventListener('click', function() {
 
 
     localStorage.setItem('statistic', JSON.stringify(statistic))
-    console.log(statistic)
-
 
 
     generateExample()

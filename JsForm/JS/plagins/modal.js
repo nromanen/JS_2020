@@ -108,6 +108,9 @@ $.modal = function(options) {
                 if (this.readyState == 4 && this.status == 201) {
                     let respond = JSON.parse(this.response)
                     console.log(respond)
+                    // sessionStorage.getItem('users')
+                    // let users = JSON.parse(sessionStorage.getItem('users'))
+                    // console.log(users)
                 }
             }
         },

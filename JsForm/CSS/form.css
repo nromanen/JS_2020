@@ -73,3 +73,11 @@ button {
   margin: auto;
   text-align: center;
 }
+
+#respond p {
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: blanchedalmond;
+  margin: 20px;
+  padding-left: 20px;
+}

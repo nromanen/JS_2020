@@ -25,7 +25,8 @@
     margin: 20px;
     padding: 20px;
     border-radius: 5px;
-
+    display: flex;
+    justify-content: space-between;
 }
 h1 {
     text-align: center;

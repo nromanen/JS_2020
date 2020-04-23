@@ -2,7 +2,7 @@
 
 let $containerTask = document.querySelector('.containerTask'),
     $containerConfig = document.querySelector('.containerConfig'),
-    $main = document.querySelector('.main')
+    $containerResults = document.querySelector('.containerResults')
 
 
 
@@ -18,11 +18,14 @@ configTask.addEventListener('click', (event) => {
         $containerConfig.style="display: block"
         configTask.classList.add('active')
         task.classList.remove('active')
+        statistic.classList.remove('active')
+        $containerResults.style = "display: none"
     }
 
 
     $containerTask.style="display: none"
 })
+
 
 
 task.addEventListener('click', () => {
@@ -36,11 +39,14 @@ task.addEventListener('click', () => {
         $containerTask.style="display: block"
         task.classList.add('active')
         configTask.classList.remove('active')
-
+        statistic.classList.remove('active')
+        $containerResults.style = "display: none"
     }
 
     $containerConfig.style="display: none"
 })
+
+
 
 
 exit.addEventListener('click', () => {
@@ -55,6 +61,13 @@ exitConfig.addEventListener('click', (event) => {
 })
 
 
+exitResult.addEventListener('click', () =>  {
+    localStorage.removeItem('statistic')
+    correct.innerHTML = 0
+    wrong.innerHTML = 0
+})
+
+
 statistic.addEventListener('click', function() {
     event.preventDefault()
     let stat = JSON.parse(localStorage.getItem('statistic')) 
@@ -66,14 +79,34 @@ statistic.addEventListener('click', function() {
         }
     }
     
+    correct.innerHTML = stat.rightAnswer
+    wrong.innerHTML = stat.wrongAnswer
 
-    let statContent = `
-    <p><span>Correct ones</span><div id="correct">${stat.rightAnswer}</div></p>
-    <p><span>Wrong ones</span><div id="wrong">${stat.wrongAnswer}</div></p>
-    `
 
-    statisticModal.setcontent(statContent)
-    statisticModal.open()
+    if ($containerResults.style.display === "block") {
+        $containerResults.style = "display: none"
+        statistic.classList.remove('active')
+
+    } else {
+        $containerResults.style="display: block"
+        statistic.classList.add('active')
+        configTask.classList.remove('active')
+        task.classList.remove('active')
+        $containerConfig.style="display: none"
+        $containerTask.style = "display: none"
+
+    }
+
+    $containerConfig.style="display: none"
+
+
+    // let statContent = `
+    // <p><span>Correct ones</span><div id="correct">${stat.rightAnswer}</div></p>
+    // <p><span>Wrong ones</span><div id="wrong">${stat.wrongAnswer}</div></p>
+    // `
+
+    // statisticModal.setcontent(statContent)
+    // statisticModal.open()
 
 })
 
@@ -131,8 +164,6 @@ const configModal = $.modalResult({
             handler() {
                 configModal.close()
                 $containerConfig.style="display: none"
-                $main.style="display: block"
-
                 }
         }]
 })
@@ -192,9 +223,20 @@ function getOptionsMinMax(event) {
     return 
 }
 
+
+
 saveConfig.addEventListener('click', getOptionsMinMax)
 
 
+
+function change(x, y) {
+    if ( x < y) {
+        let c = x
+        x = y
+        y = c
+    }
+    return [x, y]
+}
 
 
 function generateExample() {
@@ -204,6 +246,20 @@ function generateExample() {
     let b = Math.floor(configObj.min + Math.random() * (configObj.max + 1 - configObj.min))
     let signId = Math.floor(Math.random() * configObj.operations.length)
     let sign = configObj.operations[signId]
+
+    switch (sign) {
+        case '-' :
+          [a, b] = change(a, b)
+            break;
+        case '/' :
+            [a, b] = change(a, b)
+            break;
+        default:
+            break;
+    }
+
+    
+
     let stringExample = `${a} ${sign} ${b} = `
 
     if (sign ==='/') {
@@ -226,6 +282,7 @@ function generateExample() {
 
     let $generateEx = document.querySelector('#generateEx')
     $generateEx.setAttribute('disabled','')
+    $generateEx.style.display = 'none'
     
 }
 
@@ -260,28 +317,20 @@ checkYourself.addEventListener('click', function() {
 
     switch (example.sign) {
         case '+' :
-        res = a + b
+            res = a + b
             break;
 
         case '-' :
-            if ( a < b) {
-                let c = a
-                a = b
-                b = c
-            }
-        res = a - b 
+            [a, b] = change(a, b)
+            res = a - b 
             break;
 
         case '*' :
-        res = a * b
+            res = a * b
             break;
 
         case '/' :
-            if ( a < b) {
-                let c = a
-                a = b
-                b = c
-            }
+            [a, b] = change(a, b)
             if (b === 0) {
                 res = 0
             } else {
@@ -315,10 +364,11 @@ checkYourself.addEventListener('click', function() {
 
     exampleModal.setcontent(`<div id="modal-answer" class="${correctAnswer}">
     <p>You are ${correctAnswer} !</p> 
-    <p>${example.body}${example.res}</p>
+    <p>${a} ${example.sign} ${b} = ${res}</p>
     </div>
     `)
     exampleModal.open()
+    document.querySelector('[data-btn]')
 
 })
 

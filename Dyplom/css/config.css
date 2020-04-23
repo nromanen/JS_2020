@@ -12,10 +12,12 @@ body {
 
 ul {
     list-style-type: none;
-    margin: 20px;
-    padding: 0;
+    margin: 20;
+    margin-bottom: 0;
+    padding-left: 0;
     overflow: hidden;
     background-color: #333;
+
   }
   
   li {
@@ -69,9 +71,11 @@ fieldset {
 
 }
 
-.containerConfig show {
+
+
+/* .containerConfig show {
     display: block;
-}
+} */
 
 h1 {
     margin: auto; 
@@ -98,7 +102,7 @@ h1 {
     margin: 20px;
     padding: 20px;
     border-radius: 5px;
-
+    display: none;
 }
 
  #specification {
@@ -116,4 +120,10 @@ h1 {
 footer {
     display: flex;
     justify-content: space-between;
+}
+
+.operations label:hover,
+.operations .checkbox:hover {
+    color: white;
+    cursor: pointer;
 }

@@ -34,7 +34,7 @@
                     <p><label for="to">Max number</label></p>
                     <p><input type="number" id="to" required></p>
                 </fieldset>
-                <fieldset>
+                <fieldset class="operations">
                     <legend>Choose operation</legend>
                     <p><label><input type="checkbox" class="checkbox" id="addition" value="+"> Addition</label></p>
                     <p><label><input type="checkbox" class="checkbox" id="substruction" value="-"> Substruction</label></p>
@@ -46,9 +46,10 @@
                     <input type="submit" class="btn-primary" value="Save config" id="saveConfig">
                     <button id="exitConfig" class="btn-danger">Close</button>
                 </footer>   
-                
             </form>
         </div>
+
+
 
 
         <div class="containerTask">
@@ -69,7 +70,11 @@
         </div>
 
 
-
+        <div class="containerResults">
+            <p><span>Correct ones</span><div id="correct"></div></p>
+            <p><span>Wrong ones</span><div id="wrong"></div></p>
+            <p><button id="exitResult" class="btn-danger">Refresh ststistic</button></p>
+        </div>
         
 
     </div>
